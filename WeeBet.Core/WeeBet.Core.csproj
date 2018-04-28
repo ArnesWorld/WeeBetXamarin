@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MvvmCross" Version="5.7.0" />
     <PackageReference Include="MvvmCross.Core" Version="5.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

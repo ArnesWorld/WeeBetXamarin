@@ -86,11 +86,26 @@ namespace WeeBet.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int MvvmCrossTagId = 2130837504;
+			// aapt resource value: 0x7f030005
+			public const int ContendentAway = 2130903045;
 			
-			// aapt resource value: 0x7f020001
-			public const int MvxBindingTagUnique = 2130837505;
+			// aapt resource value: 0x7f030004
+			public const int ContendentHome = 2130903044;
+			
+			// aapt resource value: 0x7f030003
+			public const int MatchTime = 2130903043;
+			
+			// aapt resource value: 0x7f030000
+			public const int MvvmCrossTagId = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int MvxBindingTagUnique = 2130903041;
+			
+			// aapt resource value: 0x7f030006
+			public const int matches_list = 2130903046;
+			
+			// aapt resource value: 0x7f030002
+			public const int textView1 = 2130903042;
 			
 			static Id()
 			{
@@ -102,11 +117,39 @@ namespace WeeBet.Android
 			}
 		}
 		
+		public partial class Layout
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int item_match_test = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int item_matches = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int item_odds = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int oddsList_header = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int ShowMatchesView = 2130837508;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Layout()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int app_name = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int app_name = 2130968576;
 			
 			static String()
 			{
