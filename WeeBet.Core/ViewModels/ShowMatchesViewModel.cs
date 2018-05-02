@@ -13,16 +13,40 @@ namespace WeeBet.Core.ViewModels
     {
         private readonly IMatchDataService _matchDataService;
 
-        public string HelloText { get; set; }
-        public ObservableCollection<Match> Matches { get; set; }
+        public String CompName { get; set; }
+
+        private MvxObservableCollection<MatchHeader> _matches;
+        public MvxObservableCollection<MatchHeader> Matches
+        {
+            get { return _matches; }
+            set
+            {
+                SetProperty(ref _matches, value);
+            }
+        }
 
         public ShowMatchesViewModel(IMatchDataService matchDataService)
         {
             _matchDataService = matchDataService;
-            Matches = (ObservableCollection<Match>)_matchDataService.GetAllMatches();
-            string text = Matches[0].ContendentAway.Name;
-            HelloText = text;
-            int y = 8;
         }
+
+        public void Init(string compName)
+        {
+
+            CompName = compName;
+            Matches = new MvxObservableCollection<MatchHeader>();
+
+            List<Match> matchList = _matchDataService.GetMatchesByCompetitionId(1);
+            foreach (var m in matchList)
+            {
+                MatchHeader currMatchHeader = new MatchHeader(m);
+
+                Matches.Add(new MatchHeader(m));
+            }
+        
+        }
+
+
+
     }
 }

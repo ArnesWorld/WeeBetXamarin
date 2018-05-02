@@ -1,6 +1,10 @@
-﻿using System;
+﻿using MvvmCross.Core.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Text;
 using WeeBet.Core.Contracts.Services;
 using WeeBet.Core.Models;
@@ -9,10 +13,33 @@ namespace WeeBet.Core.Services.DataServices
 {
     public class MatchDataService : IMatchDataService
     {
-        public ObservableCollection<Match> GetAllMatches()
+        private static string MatchesURL = "http://odds.arneralston.dk/api/matches/";
+
+
+        public MatchDataService()
+        {
+
+        }
+        public List<Match> GetMatchesByCompetitionId(int id)
+        {
+            List<Match> res = new List<Match>();
+            //Get JSON from url
+            WebClient client = new WebClient();
+            string page = client.DownloadString(MatchesURL + id);
+            JArray matches = JArray.Parse(page);
+            foreach (var m in matches)
+            {
+                Match match = JsonConvert.DeserializeObject<Match>(m.ToString());
+                res.Add(match);
+            }
+
+            return res;
+        }
+
+        public List<Match> GetAllMatches()
         {
             Vendor v1 = new Vendor() { Id = 1, Name = "Unibet", Url = "www.unibet.dk" };
-            Vendor v2 = new Vendor() { Id = 1, Name = "Ladbrokes", Url = "www.Ladbrokes.dk" };
+            Vendor v2 = new Vendor() { Id = 2, Name = "Ladbrokes", Url = "www.Ladbrokes.dk" };
 
             Contendent c1 = new Contendent() { Id = 1, Country = "England", Name = "Liverpool" };
             Contendent c2 = new Contendent() { Id = 2, Country = "England", Name = "Manchester City" };
@@ -29,10 +56,11 @@ namespace WeeBet.Core.Services.DataServices
             odds1.Add(o2);
 
             List<Odds> odds2 = new List<Odds>();
+            odds1.Add(o1);
             odds2.Add(o3);
             odds2.Add(o4);
 
-            ObservableCollection<Match> res = new ObservableCollection<Match>();
+            List<Match> res = new List<Match>();
             Match m1 = new Match() { Id = 1, ContendentAway = c2, ContendentHome = c1, Time = DateTime.Now, Odds = odds1};
             Match m2 = new Match() { Id = 2, ContendentAway = c3, ContendentHome = c4, Time = DateTime.Now, Odds = odds2 };
             res.Add(m1);

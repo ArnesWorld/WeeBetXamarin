@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="20dp"
-    android:padding="10dp"
-    local:MvxBind="Text HelloText" />
-  
-  <Mvx.MvxListView
-    android:id="@+id/matches_list"
-    android:divider="@null"
-      android:dividerHeight="10.0sp"
-    android:scrollbars="vertical"
-    android:padding="20dp"
-    android:choiceMode="singleChoice"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="left|start"
-    local:MvxItemTemplate="@layout/item_matches"
-    local:MvxBind="ItemsSource Matches;" />
-  
-
-
-  
+        android:id="@+id/competition_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        local:MvxBind="Text CompName"
+        android:layout_marginLeft="10dp"
+        
+    />
+    <MvxExpandableListView
+        android:id="@+id/expandable_match_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:groupIndicator="@null"
+        local:MvxGroupItemTemplate="@layout/item_matches"
+        local:MvxItemTemplate="@layout/view_odds_item"
+        local:MvxBind="ItemsSource Matches" />
+<!--<Mvx.MvxListView
+              android:dividerHeight="10.0sp"
+                android:divider="@null"
+      android:childDivider="#ffffff"
+      
+        android:id="@+id/matches_list"
+        android:divider="@null"
+        android:dividerHeight="10.0sp"
+        android:scrollbars="vertical"
+        android:padding="20dp"
+        android:choiceMode="singleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|start"
+        local:MvxItemTemplate="@layout/item_matches"
+        local:MvxBind="ItemsSource Matches;" />-->
 </LinearLayout>

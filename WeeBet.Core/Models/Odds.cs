@@ -18,6 +18,12 @@ namespace WeeBet.Core.Models{
         public double OddsX { get; set; }
 
         public double  Odds2 { get; set; }
+        public string Test { get; set; }
+
+        public Odds()
+        {
+            Test = "Test";
+        }
 
 
 

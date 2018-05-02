@@ -4,6 +4,7 @@ using System.Text;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using WeeBet.Core.ViewModels;
+using WeeBet.Core.Models;
 
 namespace WeeBet.Core
 {
@@ -11,7 +12,7 @@ namespace WeeBet.Core
     {
         public void Start(object hint = null)
         {
-            ShowViewModel<ShowMatchesViewModel>();
+            ShowViewModel<MainViewModel>();
         }
     }
 }

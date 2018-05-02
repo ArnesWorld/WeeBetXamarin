@@ -13,12 +13,12 @@ namespace WeeBet.Core
         public override void Initialize()
         {
             base.Initialize();
-
+            /*
             CreatableTypes()
                 .EndingWith("Repository")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-
+               */
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()

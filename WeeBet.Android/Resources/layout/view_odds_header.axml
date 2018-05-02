@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <TextView
+       android:id="@+id/MatchTime"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textColor="#7c7e82"
+       android:textSize="17dp"
+       android:textAlignment="center"
+       android:text="12:00" />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/ContendentHome"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        local:MvxBind="Text ContendentHome.Name" />
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ContendentAway"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        local:MvxBind="Text ContendentAway.Name" />
+  </LinearLayout>
+    <!--<TextView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        local:MvxBind="Text ContendentHome.Name" />
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        local:MvxBind="Text ContendentHome.Name" />-->
+<!--<Mvx.MvxListView
+        android:id="@+id/matches_list"
+        android:divider="@null"
+        android:dividerHeight="10.0sp"
+        android:scrollbars="vertical"
+        android:padding="20dp"
+        android:choiceMode="singleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|start"
+        local:MvxItemTemplate="@layout/item_odds"
+        local:MvxBind="ItemsSource OddsList;" />-->
+</LinearLayout>

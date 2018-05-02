@@ -12,14 +12,14 @@ using Android.Widget;
 using MvvmCross.Droid.Views;
 using WeeBet.Core.ViewModels;
 
-namespace WeeBet.Android.Views
+namespace WeeBet.Android.View
 {
     [Activity(Label = "WeeBet", MainLauncher = true)]
-    public class ShowMatchesView : MvxActivity<ShowMatchesViewModel>
+    public class MainView : MvxActivity<MainViewModel>
     {
         protected override void OnViewModelSet()
         {
-            SetContentView(Resource.Layout.ShowMatchesView);
+            SetContentView(Resource.Layout.main_view);
         }
     }
 }
