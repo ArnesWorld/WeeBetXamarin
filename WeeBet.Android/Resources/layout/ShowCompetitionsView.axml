@@ -4,13 +4,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+
+  <TextView
         android:id="@+id/competition_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
         local:MvxBind="Text CompName"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        
+    />
     <MvxExpandableListView
         android:id="@+id/expandable_match_list"
         android:layout_width="match_parent"

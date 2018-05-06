@@ -164,13 +164,16 @@ namespace WeeBet.Android
 			public const int oddsList_header = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ShowMatchesView = 2130903044;
+			public const int ShowCompetitionsView = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int view_odds_header = 2130903045;
+			public const int ShowMatchesView = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int view_odds_item = 2130903046;
+			public const int view_odds_header = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int view_odds_item = 2130903047;
 			
 			static Layout()
 			{
