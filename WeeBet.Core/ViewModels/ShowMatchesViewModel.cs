@@ -30,7 +30,7 @@ namespace WeeBet.Core.ViewModels
             _matchDataService = matchDataService;
         }
 
-        public void Init(string compName)
+        public void Init(string compName, int id)
         {
 
             CompName = compName;

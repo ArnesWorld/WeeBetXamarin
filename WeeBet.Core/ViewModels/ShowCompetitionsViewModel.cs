@@ -12,7 +12,8 @@ namespace WeeBet.Core.ViewModels
     public class ShowCompetitionsViewModel : MvxViewModel
     {
         private readonly ICompetitionsDataService _competitionDataService;
-        private String CompName { get; set; }
+        private String SportName { get; set; }
+        public MvxCommand<Competition> RedirectToMatches { get; set; }
 
         public MvxObservableCollection<Competition> Competitions { get; set; }
 
@@ -21,10 +22,17 @@ namespace WeeBet.Core.ViewModels
             _competitionDataService = competitionsDataService;
         }
 
-        public void Init(string compName)
+        public void Init(string sportName)
         {
-            CompName = compName;
+            SportName = sportName;
             Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(1));
+            RedirectToMatches = new MvxCommand<Competition>(OnCompetitionSelected);
         }
+
+        void OnCompetitionSelected (Competition competition)
+        {
+            ShowViewModel<ShowMatchesViewModel>(new { id = competition.Id, compName = competition.Name });
+        }
+
     }
 }

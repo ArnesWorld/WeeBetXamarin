@@ -102,14 +102,17 @@ namespace WeeBet.Android
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int Competition = 2130968578;
+			
+			// aapt resource value: 0x7f040006
+			public const int ContendentAway = 2130968582;
+			
 			// aapt resource value: 0x7f040005
-			public const int ContendentAway = 2130968581;
+			public const int ContendentHome = 2130968581;
 			
 			// aapt resource value: 0x7f040004
-			public const int ContendentHome = 2130968580;
-			
-			// aapt resource value: 0x7f040003
-			public const int MatchTime = 2130968579;
+			public const int MatchTime = 2130968580;
 			
 			// aapt resource value: 0x7f040000
 			public const int MvvmCrossTagId = 2130968576;
@@ -117,35 +120,35 @@ namespace WeeBet.Android
 			// aapt resource value: 0x7f040001
 			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f04000c
-			public const int Odds1 = 2130968588;
+			// aapt resource value: 0x7f04000d
+			public const int Odds1 = 2130968589;
+			
+			// aapt resource value: 0x7f04000f
+			public const int Odds2 = 2130968591;
 			
 			// aapt resource value: 0x7f04000e
-			public const int Odds2 = 2130968590;
+			public const int OddsX = 2130968590;
 			
-			// aapt resource value: 0x7f04000d
-			public const int OddsX = 2130968589;
-			
-			// aapt resource value: 0x7f04000b
-			public const int Vendor = 2130968587;
-			
-			// aapt resource value: 0x7f040006
-			public const int button1 = 2130968582;
+			// aapt resource value: 0x7f04000c
+			public const int Vendor = 2130968588;
 			
 			// aapt resource value: 0x7f040007
-			public const int button2 = 2130968583;
+			public const int button1 = 2130968583;
 			
 			// aapt resource value: 0x7f040008
-			public const int competition_label = 2130968584;
-			
-			// aapt resource value: 0x7f04000a
-			public const int expandable_match_list = 2130968586;
+			public const int button2 = 2130968584;
 			
 			// aapt resource value: 0x7f040009
-			public const int listview_competition = 2130968585;
+			public const int competition_label = 2130968585;
 			
-			// aapt resource value: 0x7f040002
-			public const int textView1 = 2130968578;
+			// aapt resource value: 0x7f04000b
+			public const int expandable_match_list = 2130968587;
+			
+			// aapt resource value: 0x7f04000a
+			public const int listview_competition = 2130968586;
+			
+			// aapt resource value: 0x7f040003
+			public const int textView1 = 2130968579;
 			
 			static Id()
 			{
