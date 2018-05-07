@@ -20,7 +20,6 @@ namespace WeeBet.Core.ViewModels
             {
                 Sport s = new Sport() { Name = "Soccer" };
                 ShowViewModel<ShowCompetitionsViewModel>(new { compName = "Soccer"});
-
             });
 
             ShowMatchesCommand = new MvxCommand(() => {

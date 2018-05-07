@@ -6,7 +6,7 @@ using WeeBet.Core.ViewModels;
 namespace WeeBet.Android.View
 {
     [Activity(Label = "WeeBet", MainLauncher = false)]
-    class ShowCompetitionsView : MvxActivity<ShowCompetitionsViewModel>
+    public class ShowCompetitionsView : MvxActivity<ShowCompetitionsViewModel>
     {
         protected override void OnCreate(Bundle bundle)
         {

@@ -117,23 +117,32 @@ namespace WeeBet.Android
 			// aapt resource value: 0x7f040001
 			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f040009
-			public const int Odds1 = 2130968585;
+			// aapt resource value: 0x7f04000c
+			public const int Odds1 = 2130968588;
+			
+			// aapt resource value: 0x7f04000e
+			public const int Odds2 = 2130968590;
+			
+			// aapt resource value: 0x7f04000d
+			public const int OddsX = 2130968589;
 			
 			// aapt resource value: 0x7f04000b
-			public const int Odds2 = 2130968587;
-			
-			// aapt resource value: 0x7f04000a
-			public const int OddsX = 2130968586;
-			
-			// aapt resource value: 0x7f040008
-			public const int Vendor = 2130968584;
+			public const int Vendor = 2130968587;
 			
 			// aapt resource value: 0x7f040006
-			public const int competition_label = 2130968582;
+			public const int button1 = 2130968582;
 			
 			// aapt resource value: 0x7f040007
-			public const int expandable_match_list = 2130968583;
+			public const int button2 = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int competition_label = 2130968584;
+			
+			// aapt resource value: 0x7f04000a
+			public const int expandable_match_list = 2130968586;
+			
+			// aapt resource value: 0x7f040009
+			public const int listview_competition = 2130968585;
 			
 			// aapt resource value: 0x7f040002
 			public const int textView1 = 2130968578;
@@ -152,28 +161,31 @@ namespace WeeBet.Android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int item_match_test = 2130903040;
+			public const int item_competitions = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int item_matches = 2130903041;
+			public const int item_match_test = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int main_view = 2130903042;
+			public const int item_matches = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int oddsList_header = 2130903043;
+			public const int main_view = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ShowCompetitionsView = 2130903044;
+			public const int oddsList_header = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int ShowMatchesView = 2130903045;
+			public const int ShowCompetitionsView = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int view_odds_header = 2130903046;
+			public const int ShowMatchesView = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int view_odds_item = 2130903047;
+			public const int view_odds_header = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int view_odds_item = 2130903048;
 			
 			static Layout()
 			{

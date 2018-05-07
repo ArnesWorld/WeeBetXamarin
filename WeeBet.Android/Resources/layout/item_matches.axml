@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:fadingEdge="horizontal"
     android:orientation="vertical"
-    android:background="@android:color/holo_orange_light"    
+    android:background="@android:color/holo_orange_light"
     android:padding="10dp">
     <TextView
         android:id="@+id/MatchTime"
@@ -15,8 +15,7 @@
         android:textColor="#7c7e82"
         android:textSize="17dp"
         android:textAlignment="center"
-        local:MvxBind="Text Match.Time, Converter=DateTimeToString"
-          />
+        local:MvxBind="Text Match.Time, Converter=DateTimeToString" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,8 +39,7 @@
             android:textSize="17dp"
             local:MvxBind="Text Match.ContendentAway.Name" />
     </LinearLayout>
-
-  <!--<Button />
+<!--<Button />
           <TextView
             android:layout_weight="1"
             android:layout_width="match_parent"

@@ -14,27 +14,17 @@ namespace WeeBet.Core.ViewModels
         private readonly ICompetitionsDataService _competitionDataService;
         private String CompName { get; set; }
 
-        public MvxObservableCollection<CompetitionHeader> Competitions
+        public MvxObservableCollection<Competition> Competitions { get; set; }
+
+        public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService)
         {
-            get { return _competitions; }
-            set
-            {
-                SetProperty(ref _competitions, value);
-            }
+            _competitionDataService = competitionsDataService;
         }
 
         public void Init(string compName)
         {
             CompName = compName;
-            Competitions = new MvxObservableCollection<CompetitionHeader>();
-
-            List<Competition> compeitionList = _competitionDataService.GetCompetitionsBySportId(1);
-            foreach (var c in compeitionList)
-            {
-                CompetitionHeader currCompetitionHeader = new CompetitionHeader(c);
-
-                Competitions.Add(new MatchHeader(m));
-            }
+            Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(1));
         }
     }
 }

@@ -4,24 +4,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-  <TextView
+    <TextView
         android:id="@+id/competition_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
         local:MvxBind="Text CompName"
-        android:layout_marginLeft="10dp"
-        
-    />
-    <MvxExpandableListView
-        android:id="@+id/expandable_match_list"
+        android:layout_marginLeft="10dp" />
+    <MvxListView
+        android:id="@+id/listview_competition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:groupIndicator="@null"
-        local:MvxGroupItemTemplate="@layout/item_matches"
-        local:MvxItemTemplate="@layout/view_odds_item"
-        local:MvxBind="ItemsSource Matches" />
+        local:MvxItemTemplate="@layout/item_competitions"
+        local:MvxBind="ItemsSource Competitions" />
 <!--<Mvx.MvxListView
               android:dividerHeight="10.0sp"
                 android:divider="@null"
