@@ -30,13 +30,13 @@ namespace WeeBet.Core.ViewModels
             _matchDataService = matchDataService;
         }
 
-        public void Init(string compName, int id)
+        public void Init(string compName, int compId)
         {
 
             CompName = compName;
             Matches = new MvxObservableCollection<MatchHeader>();
 
-            List<Match> matchList = _matchDataService.GetMatchesByCompetitionId(1);
+            List<Match> matchList = _matchDataService.GetMatchesByCompetitionId(compId);
             foreach (var m in matchList)
             {
                 MatchHeader currMatchHeader = new MatchHeader(m);

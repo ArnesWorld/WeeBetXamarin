@@ -15,5 +15,5 @@
         android:textColor="#7c7e82"
         android:textSize="17dp"
         android:textAlignment="center"
-        local:MvxBind="Text Name; ItemClick RedirectToMatches" />
+        local:MvxBind="Text Name;" />
 </LinearLayout>
