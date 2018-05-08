@@ -6,16 +6,104 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Premier League"
-        local:MvxBind="Click ShowMatchesCommand"
-        android:id="@+id/button1" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Soccer"
-        local:MvxBind="Click ShowCompetitionsCommand"
-        android:id="@+id/button2" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="6dip">
+
+      <!--first row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+           
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Soccer"
+                local:MvxBind="Click ShowCompetitionsCommand"
+                android:id="@+id/button2"
+                android:drawableTop="@drawable/soccer"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                style="?android:attr/borderlessButtonStyle" />
+
+          <Button
+               android:layout_height="wrap_content"
+               android:text="Ice hockey"
+               local:MvxBind="Click ShowMatchesCommand"
+               android:id="@+id/button1"
+               android:drawableTop="@drawable/hockey"
+               android:layout_gravity="center_vertical"
+               android:layout_weight="1"
+               android:gravity="center_horizontal"
+               android:layout_width="match_parent"
+               style="?android:attr/borderlessButtonStyle"/>
+        </LinearLayout>
+
+      <!--second row -->
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tennis"
+            android:id="@+id/button3"
+            android:drawableTop="@drawable/tennis"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <Button
+             android:layout_height="wrap_content"
+             android:text="Basketball"
+             android:id="@+id/button4"
+             android:drawableTop="@drawable/basketball"
+             android:layout_gravity="center_vertical"
+             android:layout_weight="1"
+             android:gravity="center_horizontal"
+             android:layout_width="match_parent"
+             style="?android:attr/borderlessButtonStyle"/>
+      </LinearLayout>
+
+      <!--third row -->
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Swimming"
+            android:id="@+id/button5"
+            android:drawableTop="@drawable/swimming"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <Button
+             android:layout_height="wrap_content"
+             android:text="Fencing"
+             android:id="@+id/button6"
+             android:drawableTop="@drawable/fencing"
+             android:layout_gravity="center_vertical"
+             android:layout_weight="1"
+             android:gravity="center_horizontal"
+             android:layout_width="match_parent"
+             style="?android:attr/borderlessButtonStyle"/>
+      </LinearLayout>
+      
+    </LinearLayout>
 </LinearLayout>
