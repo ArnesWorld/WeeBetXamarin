@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Soccer"
-                local:MvxBind="Click ShowCompetitionsCommand"
+                local:MvxBind="Click ShowCompetitionsCommand, CommandParameter=1"
                 android:id="@+id/button2"
                 android:drawableTop="@drawable/soccer"
                 android:layout_gravity="center_vertical"
@@ -32,7 +32,7 @@
             <Button
                 android:layout_height="wrap_content"
                 android:text="Ice hockey"
-                local:MvxBind="Click ShowMatchesCommand"
+                local:MvxBind="Click ShowMatchesCommand, CommandParameter=2"
                 android:id="@+id/button1"
                 android:drawableTop="@drawable/hockey"
                 android:layout_gravity="center_vertical"
@@ -57,7 +57,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 style="?android:attr/borderlessButtonStyle"
-                local:MvxBind="Click ShowTennisCommand" />
+                local:MvxBind="Click  ShowCompetitionsCommand, , CommandParameter=2" />
             <Button
                 android:layout_height="wrap_content"
                 android:text="Basketball"

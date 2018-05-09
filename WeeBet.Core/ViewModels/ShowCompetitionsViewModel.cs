@@ -22,10 +22,10 @@ namespace WeeBet.Core.ViewModels
             _competitionDataService = competitionsDataService;
         }
 
-        public void Init(string sportName)
+        public void Init(int sportId)
         {
-            SportName = sportName;
-            Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(1));
+           // SportName = sportName;
+            Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
             RedirectToMatchesCommand = new MvxCommand<Competition>(OnCompetitionSelected);
         }
 

@@ -12,14 +12,14 @@ namespace WeeBet.Core.ViewModels
     public class MainViewModel : MvxViewModel
     {
         public IMvxCommand ShowMatchesCommand { get; set; }
-        public IMvxCommand ShowCompetitionsCommand { get; set; }
+        public IMvxCommand<int> ShowCompetitionsCommand { get; set; }
     
         public MainViewModel()
         {
-            ShowCompetitionsCommand = new MvxCommand(() =>
+            ShowCompetitionsCommand = new MvxCommand<int>((id) =>
             {
-                Sport s = new Sport() { Name = "Soccer" };
-                ShowViewModel<ShowCompetitionsViewModel>(new { sportName = "Soccer"});
+
+                ShowViewModel<ShowCompetitionsViewModel>(new { sportId = id });
             });
 
             ShowMatchesCommand = new MvxCommand(() => {
