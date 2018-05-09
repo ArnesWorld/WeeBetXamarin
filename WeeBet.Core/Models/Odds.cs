@@ -25,6 +25,17 @@ namespace WeeBet.Core.Models{
             Test = "Test";
         }
 
+        public double GetOddsByStringTag(string tag)
+        {        
+            switch (tag)
+            {
+                case "1": return Odds1;
+                case "x": return OddsX;
+                case "2": return Odds2;
+            }
+            return 0;
+        }
+
 
 
     }

@@ -26,5 +26,10 @@ namespace WeeBet.Core.Models
             Odds = new List<Odds>();
         }
 
+        public Odds GetOddsByVendor(Vendor vendor)
+        {
+           return Odds.FirstOrDefault( o => o.Vendor.Equals(vendor));
+        }
+
     }
 }

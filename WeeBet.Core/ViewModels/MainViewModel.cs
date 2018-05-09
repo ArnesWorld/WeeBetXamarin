@@ -18,7 +18,6 @@ namespace WeeBet.Core.ViewModels
         {
             ShowCompetitionsCommand = new MvxCommand<int>((id) =>
             {
-
                 ShowViewModel<ShowCompetitionsViewModel>(new { sportId = id });
             });
 
