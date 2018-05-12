@@ -25,9 +25,9 @@ namespace WeeBet.Core.UnitTests.GeneralServicesTests
             Match m1 = new Match() { Odds = odds1 };
             Match m2 = new Match() { Odds = odds2 };
 
-            Dictionary<string, Match> matchOutcomes = new Dictionary<string, Match>();
-            matchOutcomes.Add("1", m1);
-            matchOutcomes.Add("x", m2);
+            Dictionary<Match, string> matchOutcomes = new Dictionary<Match, string>();
+            matchOutcomes.Add(m1, "1");
+            matchOutcomes.Add(m2, "x");
 
             CombinationCalculator combCalc = new CombinationCalculator();
             VendorValue res = combCalc.CalculateCombination(matchOutcomes);

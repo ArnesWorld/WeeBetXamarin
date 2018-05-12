@@ -1,19 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using MvvmCross.Plugins.Messenger;
 using WeeBet.Core.Contracts.Services;
+using WeeBet.Core.Messages;
 using WeeBet.Core.Models;
+using WeeBet.Core.Services.General;
 
 namespace WeeBet.Core.ViewModels
 {
     public class ShowMatchesViewModel : MvxViewModel
     {
         private readonly IMatchDataService _matchDataService;
+        private readonly ICombinationCalculatorService _comboCalcService;
+
+        private List<Match> matchList;
+        private Dictionary<Match, string> matchOutcomes;
 
         public String CompName { get; set; }
+
+        public IMvxMessenger Messenger;
+        private readonly MvxSubscriptionToken _token;
+
+        private VendorValue vendorValue;
+
+        public VendorValue VendorValue
+        {
+            get { return vendorValue; }
+            set
+            {
+                vendorValue = value;
+                RaisePropertyChanged(() => VendorValue);
+            }
+        }
+
 
         private MvxObservableCollection<MatchHeader> _matches;
         public MvxObservableCollection<MatchHeader> Matches
@@ -25,10 +49,48 @@ namespace WeeBet.Core.ViewModels
             }
         }
 
-        public ShowMatchesViewModel(IMatchDataService matchDataService)
+  
+
+        public ShowMatchesViewModel(IMatchDataService matchDataService,  IMvxMessenger messenger)
         {
+            _comboCalcService = new CombinationCalculator();
+            matchOutcomes = new Dictionary<Match, string>();
             _matchDataService = matchDataService;
+            _token = messenger.Subscribe<OutcomeSelectedMessage>(UpdateVendorValue);
+            Messenger = messenger;
+            InitializeMessenger();
+            
         }
+        private void InitializeMessenger()
+        {
+            Messenger.Subscribe<OutcomeSelectedMessage>
+                (message =>
+                {
+                    OddsWrapper ow = (OddsWrapper)message.Sender;
+                    Match match = GetMatch(ow.Odds.MatchId);
+                });
+        }
+
+        private void UpdateVendorValue(OutcomeSelectedMessage message)
+        {
+            OddsWrapper ow = (OddsWrapper)message.Sender;
+            Match match = GetMatch(ow.Odds.MatchId);
+      
+            if (!matchOutcomes.ContainsKey(match))
+            {
+                matchOutcomes.Add(match ,message.OutcomeType);
+            }
+            else if(!matchOutcomes[match].Equals(message.OutcomeType))
+            {
+                matchOutcomes[match] = message.OutcomeType;
+            }
+            else
+            {
+                matchOutcomes.Remove(match);
+            }
+            VendorValue = _comboCalcService.CalculateCombination(matchOutcomes);          
+        }
+
 
         public void Init(string compName, int compId)
         {
@@ -36,14 +98,27 @@ namespace WeeBet.Core.ViewModels
             CompName = compName;
             Matches = new MvxObservableCollection<MatchHeader>();
 
-            List<Match> matchList = _matchDataService.GetMatchesByCompetitionId(compId);
+            matchList = _matchDataService.GetMatchesByCompetitionId(compId);
             foreach (var m in matchList)
             {
                 MatchHeader currMatchHeader = new MatchHeader(m);
-
-                Matches.Add(new MatchHeader(m));
+                foreach (Odds o in m.Odds)
+                {              
+                    OddsWrapper ow = new OddsWrapper(o, Messenger);
+               
+                    currMatchHeader.Add(ow);                
+                }
+                Matches.Add(currMatchHeader);
+   
             }
         
+        }
+
+        private Match GetMatch(int matchId)
+        {
+            Match res = matchList.FirstOrDefault(m => m.Id == matchId);
+
+            return res;
         }
 
 

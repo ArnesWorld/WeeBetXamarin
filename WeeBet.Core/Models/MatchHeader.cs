@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WeeBet.Core.Models
 {
-    public class MatchHeader : MvxObservableCollection<Odds>
+    public class MatchHeader : MvxObservableCollection<OddsWrapper>
     {
         public Match Match { get; set; }
         public string Title { get; set; }
@@ -13,12 +13,7 @@ namespace WeeBet.Core.Models
         public MatchHeader(Match match)
         {
             this.Match = match;
-            foreach(Odds o in match.Odds)
-            {
-                this.Add(o);
-            }
-
-           
+           // this.AddRange(match.Odds);
         }
     }
 }

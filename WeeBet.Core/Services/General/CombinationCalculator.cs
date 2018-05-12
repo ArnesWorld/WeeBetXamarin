@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WeeBet.Core.Models;
+using WeeBet.Core.Contracts.Services;
 
 namespace WeeBet.Core.Services.General
 {
-    public class CombinationCalculator
+    public class CombinationCalculator : ICombinationCalculatorService
     {
-
-        public VendorValue CalculateCombination(Dictionary<string, Match> matchOutcomes)
+        public CombinationCalculator()
         {
-            IEnumerable<string> outcomes = matchOutcomes.Keys;
-            IEnumerable<Vendor> vendors = GetVendorsFromMatches(matchOutcomes.Values);
+
+        }
+
+        public VendorValue CalculateCombination(Dictionary<Match, string> matchOutcomes)
+        {
+            IEnumerable<string> outcomes = matchOutcomes.Values;
+            IEnumerable<Vendor> vendors = GetVendorsFromMatches(matchOutcomes.Keys);
 
             VendorValue highest = new VendorValue();
             foreach(var currVendor in vendors)
@@ -20,8 +25,8 @@ namespace WeeBet.Core.Services.General
                 double combRes = 1;
                 foreach (var item in matchOutcomes)
                 {
-                    Match currMatch = item.Value;
-                    string currOutcome = item.Key;
+                    Match currMatch = item.Key;
+                    string currOutcome = item.Value;
 
                     double oddsForOutcome = currMatch.GetOddsByVendor(currVendor).GetOddsByStringTag(currOutcome);
                     combRes = combRes * oddsForOutcome;
@@ -43,7 +48,8 @@ namespace WeeBet.Core.Services.General
             {
                 foreach(Odds o in m.Odds)
                 {
-                    if (!res.Contains(o.Vendor))
+                    bool isAllreadyInList = res.Any(v => v.Name.Equals(o.Vendor.Name));
+                    if (!isAllreadyInList)
                     {
                         res.Add(o.Vendor);
                     }

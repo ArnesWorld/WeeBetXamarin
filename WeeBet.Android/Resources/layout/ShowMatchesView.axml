@@ -11,28 +11,44 @@
         android:textSize="25dp"
         local:MvxBind="Text CompName"
         android:layout_marginLeft="10dp" />
-    <MvxExpandableListView
+    <Mvx.MvxExpandableListView
         android:id="@+id/expandable_match_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:groupIndicator="@null"
         local:MvxGroupItemTemplate="@layout/item_matches"
-        local:MvxItemTemplate="@layout/view_odds_item"
+        local:MvxItemTemplate="@layout/item_odds"
         local:MvxBind="ItemsSource Matches" />
-<!--<Mvx.MvxListView
-              android:dividerHeight="10.0sp"
-                android:divider="@null"
-      android:childDivider="#ffffff"
-      
-        android:id="@+id/matches_list"
-        android:divider="@null"
-        android:dividerHeight="10.0sp"
-        android:scrollbars="vertical"
-        android:padding="20dp"
-        android:choiceMode="singleChoice"
+    <LinearLayout
+        android:id="@+id/layout_combinationResult"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|start"
-        local:MvxItemTemplate="@layout/item_matches"
-        local:MvxBind="ItemsSource Matches;" />-->
+        android:layout_height="0dp"
+        android:paddingLeft="80dp"
+            android:orientation="horizontal"
+         android:gravity="left|center"
+        android:layout_weight="1"
+    
+        android:background="#4286f4">
+        <TextView
+            android:id="@+id/textView_combRes_vendor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" 
+               android:layout_weight="1"
+            android:textStyle="bold"
+                android:textSize ="17dp"
+                android:textColor="#fff"
+           android:gravity="left|center"
+                 local:MvxBind="Text VendorValue.Vendor.Name"/>
+        <TextView
+            android:id="@+id/textView_combRes_value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" 
+               android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize ="17dp"
+                android:textColor="#fff"
+            android:gravity="left|center"
+            local:MvxBind="Text VendorValue.Value"/>
+    </LinearLayout>
 </LinearLayout>
