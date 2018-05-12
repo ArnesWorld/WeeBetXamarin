@@ -26,8 +26,18 @@ namespace WeeBet.Core.ViewModels
         public IMvxMessenger Messenger;
         private readonly MvxSubscriptionToken _token;
 
-        private VendorValue vendorValue;
+        private bool isComboResVisible;
 
+        public bool IsComboResVisible
+        {
+            get { return isComboResVisible; }
+            set { isComboResVisible = value;
+                RaisePropertyChanged(() => IsComboResVisible);
+            }
+        }
+
+
+        private VendorValue vendorValue;
         public VendorValue VendorValue
         {
             get { return vendorValue; }
@@ -88,13 +98,21 @@ namespace WeeBet.Core.ViewModels
             {
                 matchOutcomes.Remove(match);
             }
-            VendorValue = _comboCalcService.CalculateCombination(matchOutcomes);          
+            VendorValue = _comboCalcService.CalculateCombination(matchOutcomes);    
+            if(VendorValue.Value != 0)
+            {
+                IsComboResVisible = true;
+            }
+            else
+            {
+                IsComboResVisible = false;
+            }
         }
 
 
         public void Init(string compName, int compId)
         {
-
+            IsComboResVisible = false;
             CompName = compName;
             Matches = new MvxObservableCollection<MatchHeader>();
 

@@ -28,7 +28,8 @@
             android:orientation="horizontal"
          android:gravity="left|center"
         android:layout_weight="1"
-    
+        
+      local:MvxBind="Visibility Visibility(IsComboResVisible)"
         android:background="#4286f4">
         <TextView
             android:id="@+id/textView_combRes_vendor"
