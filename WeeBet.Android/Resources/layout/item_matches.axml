@@ -6,69 +6,58 @@
     android:layout_height="wrap_content"
     android:fadingEdge="horizontal"
     android:orientation="vertical"
+   
+  >
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="5dp">
+  </LinearLayout>
+  
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+
     android:background="@android:color/holo_orange_light"
-    android:padding="10dp">
+    >
     <TextView
-        android:id="@+id/MatchTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#7c7e82"
-        android:textSize="17dp"
-        android:textAlignment="center"
-        local:MvxBind="Text Match.Time, Converter=DateTimeToString" />
+    android:id="@+id/MatchTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#7c7e82"
+    android:textSize="17dp"
+    android:paddingBottom="20dp"
+       android:gravity="center"
+    local:MvxBind="Text Match.Time, Converter=DateTimeToString" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:id="@+id/ContendentHome"
-            android:textColor="@android:color/black"
-            android:textSize="17dp"
-            local:MvxBind="Text Match.ContendentHome.Name" />
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ContendentAway"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="17dp"
-            local:MvxBind="Text Match.ContendentAway.Name" />
-    </LinearLayout>
-<!--<Button />
-          <TextView
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ContendentAway"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="17dp"
-            android:text="Manchester City"
-           />-->
-<!--<Mvx.MvxListView
-        android:id="@+id/odds_list"
-        android:divider="@null"
-        android:dividerHeight="2.0sp"
-        android:scrollbars="vertical"
-        android:padding="20dp"
-        android:choiceMode="singleChoice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-     
-        local:MvxItemTemplate="@layout/view_odds_item"
-        local:MvxBind="ItemsSource OddsList;" />-->
-<!--<MvxExpandableListView
-        android:layout_width="match_parent"
+      <TextView
+          android:layout_weight="1"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
-        android:layout_weight="1"
-        
-        	local:MvxGroupItemTemplate="@layout/view_header"
-        local:MvxItemTemplate="@layout/item_odds"
-        local:MvxBind="ItemsSource OddsList"
-        />-->
+          android:textAlignment="center"
+           android:gravity="center"
+          android:id="@+id/ContendentHome"
+          android:textColor="@android:color/black"
+          android:textSize="17dp"
+          local:MvxBind="Text Match.ContendentHome.Name" />
+      <TextView
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:id="@+id/ContendentAway"
+          android:textAlignment="center"
+           android:gravity="center"
+          android:textColor="@android:color/black"
+          android:textSize="17dp"
+          local:MvxBind="Text Match.ContendentAway.Name" />
+  </LinearLayout>
+
+
+    </LinearLayout>
+
 </LinearLayout>
