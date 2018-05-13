@@ -8,17 +8,11 @@ namespace WeeBet.Core.Models
     public class MatchHeader : MvxObservableCollection<Odds>
     {
         public Match Match { get; set; }
-        public string Title { get; set; }
 
         public MatchHeader(Match match)
         {
-            this.Match = match;
-            foreach(Odds o in match.Odds)
-            {
-                this.Add(o);
-            }
-
-           
+            Match = match;
+            AddRange(match.Odds);
         }
     }
 }

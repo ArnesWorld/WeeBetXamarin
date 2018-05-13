@@ -32,7 +32,6 @@ namespace WeeBet.Core.ViewModels
 
         public void Init(string compName)
         {
-
             CompName = compName;
             Matches = new MvxObservableCollection<MatchHeader>();
 
@@ -40,10 +39,8 @@ namespace WeeBet.Core.ViewModels
             foreach (var m in matchList)
             {
                 MatchHeader currMatchHeader = new MatchHeader(m);
-
                 Matches.Add(new MatchHeader(m));
-            }
-        
+            }       
         }
 
 
