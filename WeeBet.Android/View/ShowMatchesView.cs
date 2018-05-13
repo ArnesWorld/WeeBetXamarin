@@ -40,8 +40,8 @@ namespace WeeBet.Android.Views
 
             MvxExpandableListView exList = (MvxExpandableListView)FindViewById(Resource.Id.expandable_match_list);
             MyExpandableListAdapter adapter = new MyExpandableListAdapter(this, (IMvxAndroidBindingContext)BindingContext, ViewModel);
-
             exList.SetAdapter(adapter);
+
             var set = this.CreateBindingSet<ShowMatchesView, ShowMatchesViewModel>();
             set.Bind(exList).To(vm => vm.Matches).For(el => el.ItemsSource);
             set.Apply();
@@ -50,15 +50,9 @@ namespace WeeBet.Android.Views
 
         public class MyExpandableListAdapter : MvxExpandableListAdapter
         {
-            public ShowMatchesViewModel viewModel { get; set; }
-            private int oddsViewId;
-            private int oddsHeaderId;
-            public ShowMatchesView MyContext { get; set; }
+
             public MyExpandableListAdapter(Context context, IMvxAndroidBindingContext bindingContext, ShowMatchesViewModel vm) : base(context, bindingContext)
             {
-                MyContext = (ShowMatchesView)context;
-                oddsViewId = base.ItemTemplateId;
-                oddsHeaderId = Resource.Layout.item_odds_header;
             }
 
             protected override global::Android.Views.View GetBindableView(global::Android.Views.View convertView, object dataContext, ViewGroup parent, int templateId)
@@ -68,17 +62,16 @@ namespace WeeBet.Android.Views
             }
       
 
-            public override global::Android.Views.View GetChildView(int groupPosition, int childPosition, bool isLastChild, global::Android.Views.View convertView, ViewGroup parent)
+            public override global::Android.Views.View GetChildView(int groupPosition,
+                int childPosition, bool isLastChild, 
+                global::Android.Views.View convertView, ViewGroup parent)
             {
                 int templateId = base.ItemTemplateId;
                 if (childPosition == 0)
                 {
                     templateId = Resource.Layout.item_odds_header;
                 }
-                //else if (isLastChild)
-                //{
-                //    templateId = Resource.Layout.item_odds_footer;
-                //}
+                
                 var item = this.GetRawItem(groupPosition, childPosition);               
                 return base.GetBindableView(convertView, item, parent, templateId);
             }
