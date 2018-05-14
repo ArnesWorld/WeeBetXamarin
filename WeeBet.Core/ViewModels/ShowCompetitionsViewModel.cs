@@ -12,32 +12,77 @@ namespace WeeBet.Core.ViewModels
 {
     public class ShowCompetitionsViewModel : MvxViewModel
     {
+
         private readonly ICompetitionsDataService _competitionDataService;
 
-        private readonly IFavouriteCompetitionsRepository _favouriteCompetitionsRepository;
-        private String SportName { get; set; }
+        private ICompetitionsDataService _competitionDataServiceForFavorites;
+        public String sportName = "Soccer";
+        public String favoriteText = "Your Favorites:";
         public IMvxCommand<Competition> RedirectToMatchesCommand { get; set; }
 
         public MvxObservableCollection<Competition> Competitions { get; set; }
+        public MvxObservableCollection<Competition> FavouriteCompetitions { get; set; }
+
+        private bool isFavoritesVisible;
+
+        public string SportName
+        {
+            get { return sportName; }
+            set
+            {
+                sportName = value;
+                RaisePropertyChanged(() => SportName);
+            }
+        }
+
+        public string FavoriteText
+        {
+            get { return favoriteText; }
+            set
+            {
+                favoriteText = value;
+                RaisePropertyChanged(() => FavoriteText);
+            }
+        }
+
+        public bool IsFavoritesVisible
+        {
+            get { return isFavoritesVisible; }
+            set
+            {
+                isFavoritesVisible = value;
+                RaisePropertyChanged(() => IsFavoritesVisible);
+            }
+        }
 
         public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
         {
-            _favouriteCompetitionsRepository = favouriteCompetitionsRepository;
-            _competitionDataService = competitionsDataService;   
+            _competitionDataService = competitionsDataService;
+            //_competitionDataServiceForFavorites = competitionDataServiceForFavorites;
         }
 
         public void Init(int sportId)
         {
            // SportName = sportName;
             Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
+            FavouriteCompetitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
             RedirectToMatchesCommand = new MvxCommand<Competition>(OnCompetitionSelected);
-            List<Competition> competitions = _favouriteCompetitionsRepository.GetAllFavouriteCompetitions();
-            int y = 9;
+
+            SetFavoriteVisivility();
+            
         }
 
         void OnCompetitionSelected (Competition competition)
         {
             ShowViewModel<ShowMatchesViewModel>(new { compId = competition.Id, compName = competition.Name });
+        }
+
+        void SetFavoriteVisivility()
+        {
+            if (FavouriteCompetitions.Count > 0)
+            {
+                IsFavoritesVisible = true;
+            }
         }
 
     }

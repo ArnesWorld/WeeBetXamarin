@@ -5,11 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+        android:id="@+id/favirotes_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        local:MvxBind="Text FavoriteText; Visibility Visibility(IsFavoritesVisible);"
+        android:layout_marginLeft="10dp" />
+    <MvxListView
+        android:id="@+id/listview_competition_favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxItemTemplate="@layout/item_competitions"
+        local:MvxBind="ItemsSource FavouriteCompetitions; Visibility Visibility(IsFavoritesVisible); ItemClick RedirectToMatchesCommand;" />
+  <TextView
         android:id="@+id/competition_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        local:MvxBind="Text CompName"
+        local:MvxBind="Text SportName;"
         android:layout_marginLeft="10dp" />
     <MvxListView
         android:id="@+id/listview_competition"

@@ -179,26 +179,32 @@ namespace WeeBet.Android
 			// aapt resource value: 0x7f050013
 			public const int button6 = 2131034131;
 			
-			// aapt resource value: 0x7f050014
-			public const int competition_label = 2131034132;
+			// aapt resource value: 0x7f040016
+			public const int competition_label = 2130968598;
 			
-			// aapt resource value: 0x7f050016
-			public const int expandable_match_list = 2131034134;
+			// aapt resource value: 0x7f040018
+			public const int expandable_match_list = 2130968600;
 			
-			// aapt resource value: 0x7f050017
-			public const int layout_combinationResult = 2131034135;
+			// aapt resource value: 0x7f040014
+			public const int favirotes_text = 2130968596;
 			
-			// aapt resource value: 0x7f050015
-			public const int listview_competition = 2131034133;
+			// aapt resource value: 0x7f040019
+			public const int layout_combinationResult = 2130968601;
+			
+			// aapt resource value: 0x7f040017
+			public const int listview_competition = 2130968599;
+			
+			// aapt resource value: 0x7f040015
+			public const int listview_competition_favorites = 2130968597;
 			
 			// aapt resource value: 0x7f050003
 			public const int textView1 = 2131034115;
 			
-			// aapt resource value: 0x7f050019
-			public const int textView_combRes_value = 2131034137;
+			// aapt resource value: 0x7f04001b
+			public const int textView_combRes_value = 2130968603;
 			
-			// aapt resource value: 0x7f050018
-			public const int textView_combRes_vendor = 2131034136;
+			// aapt resource value: 0x7f04001a
+			public const int textView_combRes_vendor = 2130968602;
 			
 			static Id()
 			{
