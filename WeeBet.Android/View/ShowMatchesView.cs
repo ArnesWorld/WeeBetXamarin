@@ -20,6 +20,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Binding.Droid.Views;
 using MvvmCross.Droid.Views;
+using WeeBet.Core.Models;
 using WeeBet.Core.ViewModels;
 
 namespace WeeBet.Android.Views
@@ -45,7 +46,7 @@ namespace WeeBet.Android.Views
             var set = this.CreateBindingSet<ShowMatchesView, ShowMatchesViewModel>();
             set.Bind(exList).To(vm => vm.Matches).For(el => el.ItemsSource);
             set.Apply();
-            exList.ItemTemplateId = Resource.Layout.item_odds;
+            exList.ItemTemplateId = Resource.Layout.item_odds_header;
         }
 
         public class MyExpandableListAdapter : MvxExpandableListAdapter
@@ -66,14 +67,14 @@ namespace WeeBet.Android.Views
                 int childPosition, bool isLastChild, 
                 global::Android.Views.View convertView, ViewGroup parent)
             {
-                int templateId = base.ItemTemplateId;
+                var item = this.GetRawItem(groupPosition, childPosition);
                 if (childPosition == 0)
                 {
-                    templateId = Resource.Layout.item_odds_header;
+                    OddsItemViewModel ow = (OddsItemViewModel)item;
+                    ow.IsButtonsVisible = true;             
                 }
-                
-                var item = this.GetRawItem(groupPosition, childPosition);               
-                return base.GetBindableView(convertView, item, parent, templateId);
+                      
+                return base.GetBindableView(convertView, item, parent, base.ItemTemplateId);
             }
 
             

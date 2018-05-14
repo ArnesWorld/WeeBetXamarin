@@ -9,12 +9,24 @@ using WeeBet.Core.Messages;
 
 namespace WeeBet.Core.Models
 {
-    public class OddsWrapper : MvxViewModel
+    public class OddsItemViewModel : MvxViewModel
     {
         public Odds Odds { get; set; }
         public IMvxMessenger Messenger;
         private MvxColor UnSelected = new MvxColor(175, 174, 168);
         private MvxColor Selected = new MvxColor(58, 165, 65);
+
+        private bool isButtonsVisible;
+        public bool IsButtonsVisible
+        {
+            get { return isButtonsVisible; }
+            set
+            {
+                isButtonsVisible = value;
+                RaisePropertyChanged(() => IsButtonsVisible);
+            }
+        }
+
         private MvxColor _backgroundColor1;
         public MvxColor BackgroundColor1
         {
@@ -47,8 +59,9 @@ namespace WeeBet.Core.Models
         }
         public IMvxCommand<string> BtnClickedCommand { get; set; }
 
-        public OddsWrapper(Odds odds, IMvxMessenger messenger)
+        public OddsItemViewModel(Odds odds, IMvxMessenger messenger)
         {
+            IsButtonsVisible = false;
             SetAllBtnsToUnSelected();
             Messenger = messenger; 
             this.Odds = odds;

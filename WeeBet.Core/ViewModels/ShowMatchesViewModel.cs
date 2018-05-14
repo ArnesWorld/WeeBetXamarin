@@ -76,14 +76,14 @@ namespace WeeBet.Core.ViewModels
             Messenger.Subscribe<OutcomeSelectedMessage>
                 (message =>
                 {
-                    OddsWrapper ow = (OddsWrapper)message.Sender;
+                    OddsItemViewModel ow = (OddsItemViewModel)message.Sender;
                     Match match = GetMatch(ow.Odds.MatchId);
                 });
         }
 
         private void UpdateVendorValue(OutcomeSelectedMessage message)
         {
-            OddsWrapper ow = (OddsWrapper)message.Sender;
+            OddsItemViewModel ow = (OddsItemViewModel)message.Sender;
             Match match = GetMatch(ow.Odds.MatchId);
       
             if (!matchOutcomes.ContainsKey(match))
@@ -122,7 +122,7 @@ namespace WeeBet.Core.ViewModels
                 MatchHeader currMatchHeader = new MatchHeader(m);
                 foreach (Odds o in m.Odds)
                 {              
-                    OddsWrapper ow = new OddsWrapper(o, Messenger);
+                    OddsItemViewModel ow = new OddsItemViewModel(o, Messenger);
                
                     currMatchHeader.Add(ow);                
                 }

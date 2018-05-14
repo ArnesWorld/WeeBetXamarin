@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:text="1"        
             android:layout_marginRight="1dp"
-      local:MvxBind="Click BtnClickedCommand, CommandParameter=1; BackgroundColor NativeColor(BackgroundColor1)"/>
+      local:MvxBind="Click BtnClickedCommand, CommandParameter=1; BackgroundColor NativeColor(BackgroundColor1); Visibility Visibility(IsButtonsVisible)"/>
         <Button
             android:id="@+id/btnOddsX"
             android:layout_width="0dp"
@@ -25,7 +25,7 @@
             android:layout_height="40dp"
             android:text="X" 
                
-     local:MvxBind="Click BtnClickedCommand, CommandParameter=x; BackgroundColor NativeColor(BackgroundColorX)"/>
+     local:MvxBind="Click BtnClickedCommand, CommandParameter=x; BackgroundColor NativeColor(BackgroundColorX); Visibility Visibility(IsButtonsVisible)"/>
         <Button
             android:id="@+id/btnOdds2"
             android:layout_width="0dp"
@@ -33,7 +33,7 @@
             android:layout_height="40dp"
             android:text="2" 
                 android:layout_marginLeft="1dp"
-            local:MvxBind="Click BtnClickedCommand, CommandParameter=2; BackgroundColor NativeColor(BackgroundColor2)"/>
+            local:MvxBind="Click BtnClickedCommand, CommandParameter=2; BackgroundColor NativeColor(BackgroundColor2); Visibility Visibility(IsButtonsVisible)"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
