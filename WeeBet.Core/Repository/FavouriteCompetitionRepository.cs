@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Plugins.Sqlite;
 using SQLite;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,30 +10,48 @@ using WeeBet.Core.Models;
 
 namespace WeeBet.Core.Repository
 {
-    public class FavouriteCompetitionRepository : IFavouriteCompetitionsRepository
+    public class FavouriteCompetitionRepository : FavouriteCompetitionsRepository
     {
         private readonly SQLiteConnection _connection;
 
-        public FavouriteCompetitionRepository()
-        {
-
-        }
-        //public FavouriteCompetitionRepository(IMvxSqliteConnectionFactory sqliteConnectionFactory)
+        //public FavouriteCompetitionRepository()
         //{
-        //    _connection = sqliteConnectionFactory.GetConnection("WeeBetDb");
-        //    _connection.CreateTable<Competition>();
 
         //}
-        public void AddMatchToFavourites(Competition match)
+        public FavouriteCompetitionRepository(IMvxSqliteConnectionFactory sqliteConnectionFactory)
         {
-            _connection.Insert(match);
+            _connection = sqliteConnectionFactory.GetConnection("WeeBetDb");
+            _connection.CreateTable<Competition>();
+
+        }
+        public void AddMatchToFavourites(Competition competition)
+        {
+            _connection.Insert(competition);
+            
+        }
+
+        public void DeleteCompetitionFromFavourites(Competition competition)
+        {
+            _connection.Delete(competition);
         }
 
         public List<Competition> GetAllFavouriteCompetitions()
         {
-            // var query = _connection.Table<Competition>().To;
-            return new List<Competition>(); ;
+            List<Competition> res = new List<Competition>();
+            var favComps = _connection.Table<Competition>();
+            foreach (var item in favComps)
+            {
+                Competition currComp = (Competition)item;
+                res.Add(currComp);
+            }
+            return res; 
            
+        }
+
+        public void Nuke()
+        {
+            _connection.DeleteAll<Competition>();
+                
         }
     }
 }

@@ -5,10 +5,14 @@ using WeeBet.Core.Models;
 
 namespace WeeBet.Core.Contracts.Repository
 {
-    public interface IFavouriteCompetitionsRepository
+    public interface FavouriteCompetitionsRepository
     {
-        void AddMatchToFavourites(Competition match);
+        void AddMatchToFavourites(Competition competition);
 
         List<Competition> GetAllFavouriteCompetitions();
+
+        void DeleteCompetitionFromFavourites(Competition competition);
+
+        void Nuke();
     }
 }

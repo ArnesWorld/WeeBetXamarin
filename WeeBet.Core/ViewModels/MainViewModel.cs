@@ -18,13 +18,28 @@ namespace WeeBet.Core.ViewModels
         {
             ShowCompetitionsCommand = new MvxCommand<int>((id) =>
             {
-                ShowViewModel<ShowCompetitionsViewModel>(new { sportId = id });
+                string sName = GetSportNameById(id);
+                ShowViewModel<ShowCompetitionsViewModel>(new { sportId = id, sportName =sName });
             });
 
             ShowMatchesCommand = new MvxCommand(() => {
                 Competition c = new Competition() { Name = "Premier League" };
                 ShowViewModel<ShowMatchesViewModel>(new {compName = "Premier League" });
             });           
+        }
+
+        private string GetSportNameById(int id)
+        {
+            switch (id)
+            {
+                case 1: return "Soccer";
+                case 2: return "Hockey";
+                case 3: return "Tennis";
+                case 4: return "Basketball";
+                case 5: return "Swimming";
+                case 6: return "Fencing";
+                default: return "";
+            };
         }
 
         public class DetailParameters
