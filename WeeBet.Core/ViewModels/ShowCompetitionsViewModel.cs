@@ -13,9 +13,9 @@ namespace WeeBet.Core.ViewModels
     public class ShowCompetitionsViewModel : MvxViewModel
     {
 
-        private readonly ICompetitionsDataService _competitionDataService;
+        protected readonly ICompetitionsDataService _competitionDataService;
 
-        private ICompetitionsDataService _competitionDataServiceForFavorites;
+        protected readonly IFavouriteCompetitionsRepository _favouriteCompetitionsRepository;
         public String sportName = "Soccer";
         public String favoriteText = "Your Favorites:";
         public IMvxCommand<Competition> RedirectToMatchesCommand { get; set; }
@@ -58,7 +58,7 @@ namespace WeeBet.Core.ViewModels
         public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
         {
             _competitionDataService = competitionsDataService;
-            //_competitionDataServiceForFavorites = competitionDataServiceForFavorites;
+            _favouriteCompetitionsRepository = favouriteCompetitionsRepository;
         }
 
         public void Init(int sportId)
