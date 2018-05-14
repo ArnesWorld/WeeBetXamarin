@@ -56,10 +56,10 @@ namespace WeeBet.Core.ViewModels
         }
         
 
-        private MvxCommand<Competition> _memoryLongClickCommand;
-        public IMvxCommand MemoryLongClickCommand
+        private MvxCommand<Competition> _competitionClickCommand;
+        public IMvxCommand CompetitionLongClickCommand
         {
-            get { return _memoryLongClickCommand ?? (_memoryLongClickCommand = new MvxCommand<Competition>(AddRemoveFavourites)); }
+            get { return _competitionClickCommand ?? (_competitionClickCommand = new MvxCommand<Competition>(AddRemoveFavourites)); }
         }
 
         void AddRemoveFavourites(Competition selectedMemory)
