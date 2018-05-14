@@ -20,6 +20,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Binding.Droid.Views;
 using MvvmCross.Droid.Views;
+using WeeBet.Core.Contracts.ViewModels;
 using WeeBet.Core.Models;
 using WeeBet.Core.ViewModels;
 
@@ -70,7 +71,7 @@ namespace WeeBet.Android.Views
                 var item = this.GetRawItem(groupPosition, childPosition);
                 if (childPosition == 0)
                 {
-                    OddsItemViewModel ow = (OddsItemViewModel)item;
+                    IOddsItemViewModel ow = (IOddsItemViewModel)item;
                     ow.IsButtonsVisible = true;             
                 }
                       

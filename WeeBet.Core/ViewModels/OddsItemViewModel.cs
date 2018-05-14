@@ -5,14 +5,15 @@ using MvvmCross.Plugins.Messenger;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WeeBet.Core.Contracts.ViewModels;
 using WeeBet.Core.Messages;
 
 namespace WeeBet.Core.Models
 {
-    public class OddsItemViewModel : MvxViewModel
+    public class OddsItemViewModel : MvxViewModel, IOddsItemViewModel
     {
         public Odds Odds { get; set; }
-        public IMvxMessenger Messenger;
+        public IMvxMessenger Messenger { get; set; }
         private MvxColor UnSelected = new MvxColor(175, 174, 168);
         private MvxColor Selected = new MvxColor(58, 165, 65);
 
@@ -68,7 +69,7 @@ namespace WeeBet.Core.Models
             BtnClickedCommand = new MvxCommand<string>(ButtonClicked);         
         }
 
-        public void ButtonClicked(string outcomeType)
+        private void ButtonClicked(string outcomeType)
         {
             //Handle button color change
             switch (outcomeType)
