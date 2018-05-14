@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         local:MvxItemTemplate="@layout/item_competitions"
-        local:MvxBind="ItemsSource Competitions;  ItemClick RedirectToMatchesCommand;" />
+        local:MvxBind="ItemsSource Competitions;  ItemClick RedirectToMatchesCommand; ItemLongClick MemoryLongClickCommand" />
 <!--<Mvx.MvxListView
               android:dividerHeight="10.0sp"
                 android:divider="@null"

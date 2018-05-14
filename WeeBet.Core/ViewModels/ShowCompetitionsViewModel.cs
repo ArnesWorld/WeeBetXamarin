@@ -17,6 +17,17 @@ namespace WeeBet.Core.ViewModels
 
         public MvxObservableCollection<Competition> Competitions { get; set; }
 
+        private MvxCommand<Competition> _memoryLongClickCommand;
+        public IMvxCommand MemoryLongClickCommand
+        {
+            get { return _memoryLongClickCommand ?? (_memoryLongClickCommand = new MvxCommand<Competition>(AddRemoveFavourites)); }
+        }
+
+        void AddRemoveFavourites(Competition selectedMemory)
+        {
+            int a = 9;
+        }
+
         public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService)
         {
             _competitionDataService = competitionsDataService;
@@ -27,6 +38,7 @@ namespace WeeBet.Core.ViewModels
            // SportName = sportName;
             Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
             RedirectToMatchesCommand = new MvxCommand<Competition>(OnCompetitionSelected);
+            
         }
 
         void OnCompetitionSelected (Competition competition)
