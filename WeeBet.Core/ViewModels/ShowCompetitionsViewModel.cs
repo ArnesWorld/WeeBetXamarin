@@ -11,16 +11,38 @@ namespace WeeBet.Core.ViewModels
 {
     public class ShowCompetitionsViewModel : MvxViewModel
     {
+
         private readonly ICompetitionsDataService _competitionDataService;
 
         private ICompetitionsDataService _competitionDataServiceForFavorites;
-        private String SportName { get; set; }
+        public String sportName = "Soccer";
+        public String favoriteText = "Your Favorites:";
         public IMvxCommand<Competition> RedirectToMatchesCommand { get; set; }
 
         public MvxObservableCollection<Competition> Competitions { get; set; }
         public MvxObservableCollection<Competition> FavouriteCompetitions { get; set; }
 
         private bool isFavoritesVisible;
+
+        public string SportName
+        {
+            get { return sportName; }
+            set
+            {
+                sportName = value;
+                RaisePropertyChanged(() => SportName);
+            }
+        }
+
+        public string FavoriteText
+        {
+            get { return favoriteText; }
+            set
+            {
+                favoriteText = value;
+                RaisePropertyChanged(() => FavoriteText);
+            }
+        }
 
         public bool IsFavoritesVisible
         {
