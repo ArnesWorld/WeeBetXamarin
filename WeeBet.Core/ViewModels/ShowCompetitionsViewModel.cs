@@ -54,8 +54,20 @@ namespace WeeBet.Core.ViewModels
                 RaisePropertyChanged(() => IsFavoritesVisible);
             }
         }
+        
 
-        public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
+        private MvxCommand<Competition> _memoryLongClickCommand;
+        public IMvxCommand MemoryLongClickCommand
+        {
+            get { return _memoryLongClickCommand ?? (_memoryLongClickCommand = new MvxCommand<Competition>(AddRemoveFavourites)); }
+        }
+
+        void AddRemoveFavourites(Competition selectedMemory)
+        {
+            int a = 9;
+        }
+
+       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
         {
             _competitionDataService = competitionsDataService;
             _favouriteCompetitionsRepository = favouriteCompetitionsRepository;

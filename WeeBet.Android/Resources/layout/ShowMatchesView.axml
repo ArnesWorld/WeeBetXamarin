@@ -25,31 +25,29 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingLeft="80dp"
-            android:orientation="horizontal"
-         android:gravity="left|center"
+        android:orientation="horizontal"
+        android:gravity="left|center"
         android:layout_weight="1"
-        
-      local:MvxBind="Visibility Visibility(IsComboResVisible)"
         android:background="#4286f4">
         <TextView
             android:id="@+id/textView_combRes_vendor"
             android:layout_width="0dp"
-            android:layout_height="match_parent" 
-               android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:textStyle="bold"
-                android:textSize ="17dp"
-                android:textColor="#fff"
-           android:gravity="left|center"
-                 local:MvxBind="Text VendorValue.Vendor.Name"/>
+            android:textSize="17dp"
+            android:textColor="#fff"
+            android:gravity="left|center"
+            local:MvxBind="Text VendorValue.Vendor.Name" />
         <TextView
             android:id="@+id/textView_combRes_value"
             android:layout_width="0dp"
-            android:layout_height="match_parent" 
-               android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:textStyle="bold"
-            android:textSize ="17dp"
-                android:textColor="#fff"
+            android:textSize="17dp"
+            android:textColor="#fff"
             android:gravity="left|center"
-            local:MvxBind="Text VendorValue.Value"/>
+            local:MvxBind="Text VendorValue.Value" />
     </LinearLayout>
 </LinearLayout>
