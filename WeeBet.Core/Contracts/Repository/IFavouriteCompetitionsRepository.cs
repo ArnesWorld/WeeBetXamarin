@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WeeBet.Core.Models;
 
 namespace WeeBet.Core.Contracts.Repository
 {
-    interface IFavouriteCompetitionsRepository
+    public interface IFavouriteCompetitionsRepository
     {
+        void AddMatchToFavourites(Competition match);
+
+        List<Competition> GetAllFavouriteCompetitions();
     }
 }
