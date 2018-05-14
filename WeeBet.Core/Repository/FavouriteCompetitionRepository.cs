@@ -35,10 +35,10 @@ namespace WeeBet.Core.Repository
             _connection.Delete(competition);
         }
 
-        public List<Competition> GetAllFavouriteCompetitions()
+        public List<Competition> GetAllFavouriteCompetitionsBySportId(int sportId)
         {
             List<Competition> res = new List<Competition>();
-            var favComps = _connection.Table<Competition>();
+            var favComps = _connection.Table<Competition>().Where(c => c.SportID == sportId);
             foreach (var item in favComps)
             {
                 Competition currComp = (Competition)item;

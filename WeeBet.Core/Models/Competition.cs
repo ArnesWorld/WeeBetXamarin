@@ -7,7 +7,7 @@ namespace WeeBet.Core.Models
 {
     public class Competition
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
         public int SportID { get; set; }

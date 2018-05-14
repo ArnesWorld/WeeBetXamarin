@@ -16,7 +16,7 @@ namespace WeeBet.Core.ViewModels
 
         protected readonly ICompetitionsDataService _competitionDataService;
         protected readonly FavouriteCompetitionsRepository _favouriteCompetitionsRepository;
-
+        private int _sportId;
      
         public String favoriteText = "Favorites:";
         public IMvxCommand<Competition> RedirectToMatchesCommand { get; set; }
@@ -84,7 +84,7 @@ namespace WeeBet.Core.ViewModels
             {
                 _favouriteCompetitionsRepository.AddMatchToFavourites(selectedCompetition);
             }
-            LoadFavouriteCompetitons();
+            LoadFavouriteCompetitons(_sportId);
         }
 
        public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, FavouriteCompetitionsRepository favouriteCompetitionsRepository)
@@ -96,9 +96,10 @@ namespace WeeBet.Core.ViewModels
         public void Init(int sportId, string sportName)
         {
              SportName = sportName;
-           // _favouriteCompetitionsRepository.Nuke();
+            _sportId = sportId;
+            _favouriteCompetitionsRepository.Nuke();
             Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
-            LoadFavouriteCompetitons();
+            LoadFavouriteCompetitons(_sportId);
             RedirectToMatchesCommand = new MvxCommand<Competition>(OnCompetitionSelected);
 
             
@@ -109,9 +110,9 @@ namespace WeeBet.Core.ViewModels
             ShowViewModel<ShowMatchesViewModel>(new { compId = competition.Id, compName = competition.Name });
         }
 
-        private void LoadFavouriteCompetitons()
+        private void LoadFavouriteCompetitons(int sportId)
         {
-            FavouriteCompetitions = new MvxObservableCollection<Competition>(_favouriteCompetitionsRepository.GetAllFavouriteCompetitions());
+            FavouriteCompetitions = new MvxObservableCollection<Competition>(_favouriteCompetitionsRepository.GetAllFavouriteCompetitionsBySportId(sportId));
             SetFavoriteVisivility();
         }
 
