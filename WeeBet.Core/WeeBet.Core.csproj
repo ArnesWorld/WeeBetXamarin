@@ -9,6 +9,7 @@
     <PackageReference Include="MvvmCross.Core" Version="5.7.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="5.7.0" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="5.7.0" />
+    <PackageReference Include="MvvmCross.Plugin.SQLitePCL" Version="4.4.0" />
     <PackageReference Include="MvvmCross.Plugin.Visibility" Version="5.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>

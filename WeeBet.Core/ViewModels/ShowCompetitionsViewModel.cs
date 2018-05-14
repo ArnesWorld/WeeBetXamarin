@@ -14,8 +14,8 @@ namespace WeeBet.Core.ViewModels
     {
 
         protected readonly ICompetitionsDataService _competitionDataService;
-
         protected readonly IFavouriteCompetitionsRepository _favouriteCompetitionsRepository;
+
         public String sportName = "Soccer";
         public String favoriteText = "Your Favorites:";
         public IMvxCommand<Competition> RedirectToMatchesCommand { get; set; }

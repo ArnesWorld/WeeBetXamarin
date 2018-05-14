@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         local:MvxItemTemplate="@layout/item_competitions"
         local:MvxBind="ItemsSource FavouriteCompetitions; Visibility Visibility(IsFavoritesVisible); ItemClick RedirectToMatchesCommand;" />
-  <TextView
+    <TextView
         android:id="@+id/competition_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -13,10 +13,10 @@ namespace WeeBet.Core.Repository
     {
         private readonly SQLiteConnection _connection;
 
-        public FavouriteCompetitionRepository(IMvxSqliteConnectionFactory sqliteConnectionFactory)
+        public FavouriteCompetitionRepository()
         {
-            _connection = sqliteConnectionFactory.GetConnection("WeeBetDb");
-            _connection.CreateTable<Competition>();
+            //_connection = sqliteConnectionFactory.GetConnection("WeeBetDb");
+            //_connection.CreateTable<Competition>();
 
         }
         public void AddMatchToFavourites(Competition match)
@@ -27,7 +27,7 @@ namespace WeeBet.Core.Repository
         public List<Competition> GetAllFavouriteCompetitions()
         {
             // var query = _connection.Table<Competition>().To;
-            return null;
+            return new List<Competition>() ;
            
         }
     }
