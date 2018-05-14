@@ -12,6 +12,12 @@
         local:MvxBind="Text CompName"
         android:layout_marginLeft="10dp" />
     <MvxListView
+        android:id="@+id/listview_competition_favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxItemTemplate="@layout/item_competitions"
+        local:MvxBind="ItemsSource FavouriteCompetitions; Visibility Visibility(IsFavoritesVisible); ItemClick RedirectToMatchesCommand;" />
+    <MvxListView
         android:id="@+id/listview_competition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

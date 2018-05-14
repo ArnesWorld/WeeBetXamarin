@@ -12,26 +12,54 @@ namespace WeeBet.Core.ViewModels
     public class ShowCompetitionsViewModel : MvxViewModel
     {
         private readonly ICompetitionsDataService _competitionDataService;
+
+        private ICompetitionsDataService _competitionDataServiceForFavorites;
         private String SportName { get; set; }
         public IMvxCommand<Competition> RedirectToMatchesCommand { get; set; }
 
         public MvxObservableCollection<Competition> Competitions { get; set; }
+        public MvxObservableCollection<Competition> FavouriteCompetitions { get; set; }
+
+        private bool isFavoritesVisible;
+
+        public bool IsFavoritesVisible
+        {
+            get { return isFavoritesVisible; }
+            set
+            {
+                isFavoritesVisible = value;
+                RaisePropertyChanged(() => IsFavoritesVisible);
+            }
+        }
 
         public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService)
         {
             _competitionDataService = competitionsDataService;
+            //_competitionDataServiceForFavorites = competitionDataServiceForFavorites;
         }
 
         public void Init(int sportId)
         {
            // SportName = sportName;
             Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
+            FavouriteCompetitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
             RedirectToMatchesCommand = new MvxCommand<Competition>(OnCompetitionSelected);
+
+            SetFavoriteVisivility();
+            
         }
 
         void OnCompetitionSelected (Competition competition)
         {
             ShowViewModel<ShowMatchesViewModel>(new { compId = competition.Id, compName = competition.Name });
+        }
+
+        void SetFavoriteVisivility()
+        {
+            if (FavouriteCompetitions.Count > 0)
+            {
+                IsFavoritesVisible = true;
+            }
         }
 
     }
