@@ -10,12 +10,12 @@ namespace WeeBet.Core.Contracts.ViewModels
 {
     public interface IOddsItemViewModel
     {
-         bool IsButtonsVisible { get; set; }
-         Odds Odds { get; set; }
-         IMvxMessenger Messenger { get; set; }
-         MvxColor BackgroundColor1 { get; set; }
+        bool IsButtonsVisible { get; set; }
+        Odds Odds { get; set; }
+        IMvxMessenger Messenger { get; set; }
+        MvxColor BackgroundColor1 { get; set; }
         MvxColor BackgroundColor2 { get; set; }
         MvxColor BackgroundColorX { get; set; }
-        IMvxCommand<string> BtnClickedCommand { get; set; }
+        IMvxCommand<string> OutcomeClickedCommand { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using WeeBet.Core.Contracts.Services;
 using WeeBet.Core.Models;
 
@@ -26,6 +27,22 @@ namespace WeeBet.Core.Services.DataServices
             //Get JSON from url
             WebClient client = new WebClient();
             string page = client.DownloadString(MatchesURL + id);
+            JArray matches = JArray.Parse(page);
+            foreach (var m in matches)
+            {
+                Match match = JsonConvert.DeserializeObject<Match>(m.ToString());
+                res.Add(match);
+            }
+
+            return res;
+        }
+
+        public async Task<List<Match>> GetMatchesByCompetitionIdAsync(int id)
+        {
+            List<Match> res = new List<Match>();
+            //Get JSON from url
+            WebClient client = new WebClient();
+            string page = await client.DownloadStringTaskAsync(MatchesURL + id);
             JArray matches = JArray.Parse(page);
             foreach (var m in matches)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Plugins.Messenger;
@@ -68,17 +69,6 @@ namespace WeeBet.Core.ViewModels
             _matchDataService = matchDataService;
             _token = messenger.Subscribe<OutcomeSelectedMessage>(UpdateVendorValue);
             Messenger = messenger;
-            InitializeMessenger();
-            
-        }
-        private void InitializeMessenger()
-        {
-            Messenger.Subscribe<OutcomeSelectedMessage>
-                (message =>
-                {
-                    OddsItemViewModel ow = (OddsItemViewModel)message.Sender;
-                    Match match = GetMatch(ow.Odds.MatchId);
-                });
         }
 
         private void UpdateVendorValue(OutcomeSelectedMessage message)
@@ -116,20 +106,39 @@ namespace WeeBet.Core.ViewModels
             CompName = compName;
             Matches = new MvxObservableCollection<MatchHeader>();
 
-            matchList = _matchDataService.GetMatchesByCompetitionId(compId);
+            GetMatchesFromDataServiceAsync(compId);
+            //matchList = _matchDataService.GetMatchesByCompetitionId(compId);
+            //foreach (var m in matchList)
+            //{
+            //    MatchHeader currMatchHeader = new MatchHeader(m);
+            //    foreach (Odds o in m.Odds)
+            //    {              
+            //        OddsItemViewModel ow = new OddsItemViewModel(o, Messenger);
+               
+            //        currMatchHeader.Add(ow);                
+            //    }
+            //    Matches.Add(currMatchHeader);
+   
+            //}
+        
+        }
+
+
+        public async void GetMatchesFromDataServiceAsync(int compId)
+        {
+           matchList = await _matchDataService.GetMatchesByCompetitionIdAsync(compId);
             foreach (var m in matchList)
             {
                 MatchHeader currMatchHeader = new MatchHeader(m);
                 foreach (Odds o in m.Odds)
-                {              
+                {
                     OddsItemViewModel ow = new OddsItemViewModel(o, Messenger);
-               
-                    currMatchHeader.Add(ow);                
+
+                    currMatchHeader.Add(ow);
                 }
                 Matches.Add(currMatchHeader);
-   
+
             }
-        
         }
 
         private Match GetMatch(int matchId)

@@ -5,7 +5,7 @@ using WeeBet.Core.Models;
 
 namespace WeeBet.Core.Contracts.Repository
 {
-    public interface FavouriteCompetitionsRepository
+    public interface IFavouriteCompetitionsRepository
     {
         void AddMatchToFavourites(Competition competition);
 

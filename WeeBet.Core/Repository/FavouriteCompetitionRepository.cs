@@ -4,13 +4,14 @@ using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WeeBet.Core.Contracts.Repository;
 using WeeBet.Core.Models;
 
 
 namespace WeeBet.Core.Repository
 {
-    public class FavouriteCompetitionRepository : FavouriteCompetitionsRepository
+    public class FavouriteCompetitionRepository : IFavouriteCompetitionsRepository
     {
         private readonly SQLiteConnection _connection;
 
@@ -47,6 +48,19 @@ namespace WeeBet.Core.Repository
             return res; 
            
         }
+
+        //public Task<List<Match>> GetAllFavouriteCompetitionsBySportIdAsync(int sportId)
+        //{
+        //    List<Competition> res = new List<Competition>();
+        //    var favComps = _connection.Table<Competition>().Where(c => c.SportID == sportId);
+        //    foreach (var item in favComps)
+        //    {
+        //        Competition currComp = (Competition)item;
+        //        res.Add(currComp);
+        //    }
+        //    return res;
+
+        //}
 
         public void Nuke()
         {

@@ -15,7 +15,7 @@ namespace WeeBet.Core.ViewModels
     {
 
         protected readonly ICompetitionsDataService _competitionDataService;
-        protected readonly FavouriteCompetitionsRepository _favouriteCompetitionsRepository;
+        protected readonly IFavouriteCompetitionsRepository _favouriteCompetitionsRepository;
         private int _sportId;
      
         public String favoriteText = "Favorites:";
@@ -87,7 +87,7 @@ namespace WeeBet.Core.ViewModels
             LoadFavouriteCompetitons(_sportId);
         }
 
-       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, FavouriteCompetitionsRepository favouriteCompetitionsRepository)
+       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
         {
             _competitionDataService = competitionsDataService;
             _favouriteCompetitionsRepository = favouriteCompetitionsRepository;

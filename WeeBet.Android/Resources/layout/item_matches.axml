@@ -5,59 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fadingEdge="horizontal"
-    android:orientation="vertical"
-   
-  >
-
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="5dp">
-  </LinearLayout>
-  
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp"
-
-    android:background="@android:color/holo_orange_light"
-    >
-    <TextView
-    android:id="@+id/MatchTime"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textColor="#7c7e82"
-    android:textSize="17dp"
-    android:paddingBottom="20dp"
-       android:gravity="center"
-    local:MvxBind="Text Match.Time, Converter=DateTimeToString" />
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-      <TextView
-          android:layout_weight="1"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:textAlignment="center"
-           android:gravity="center"
-          android:id="@+id/ContendentHome"
-          android:textColor="@android:color/black"
-          android:textSize="17dp"
-          local:MvxBind="Text Match.ContendentHome.Name" />
-      <TextView
-          android:layout_weight="1"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:id="@+id/ContendentAway"
-          android:textAlignment="center"
-           android:gravity="center"
-          android:textColor="@android:color/black"
-          android:textSize="17dp"
-          local:MvxBind="Text Match.ContendentAway.Name" />
-  </LinearLayout>
-
-
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@android:color/holo_orange_light">
+        <TextView
+            android:id="@+id/MatchTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#7c7e82"
+            android:textSize="17dp"
+            android:paddingBottom="20dp"
+            android:gravity="center"
+            local:MvxBind="Text Match.Time, Converter=DateTimeToString" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:id="@+id/ContendentHome"
+                android:textColor="@android:color/black"
+                android:textSize="17dp"
+                local:MvxBind="Text Match.ContendentHome.Name" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ContendentAway"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="17dp"
+                local:MvxBind="Text Match.ContendentAway.Name" />
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

@@ -58,7 +58,7 @@ namespace WeeBet.Core.Models
                 RaisePropertyChanged(() => BackgroundColor2);
             }
         }
-        public IMvxCommand<string> BtnClickedCommand { get; set; }
+        public IMvxCommand<string> OutcomeClickedCommand { get; set; }
 
         public OddsItemViewModel(Odds odds, IMvxMessenger messenger)
         {
@@ -66,16 +66,23 @@ namespace WeeBet.Core.Models
             SetAllBtnsToUnSelected();
             Messenger = messenger; 
             this.Odds = odds;
-            BtnClickedCommand = new MvxCommand<string>(ButtonClicked);         
+            OutcomeClickedCommand = new MvxCommand<string>(ButtonClicked);         
         }
 
         private void ButtonClicked(string outcomeType)
         {
             //Handle button color change
+            SetSelection(outcomeType);
+            //Send message to ShowMatchesViewModel holding data
+            Messenger.Publish(new OutcomeSelectedMessage(this, outcomeType));
+        }
+
+        private void SetSelection(string outcomeType)
+        {       
             switch (outcomeType)
             {
                 case "1":
-                    BackgroundColor1 = BackgroundColor1.Equals(Selected) ? UnSelected : Selected ;BackgroundColorX = UnSelected; BackgroundColor2 = UnSelected;
+                    BackgroundColor1 = BackgroundColor1.Equals(Selected) ? UnSelected : Selected; BackgroundColorX = UnSelected; BackgroundColor2 = UnSelected;
                     break;
                 case "x":
                     BackgroundColorX = BackgroundColorX.Equals(Selected) ? UnSelected : Selected; BackgroundColor1 = UnSelected; BackgroundColor2 = UnSelected;
@@ -84,10 +91,6 @@ namespace WeeBet.Core.Models
                     BackgroundColor2 = BackgroundColor2.Equals(Selected) ? UnSelected : Selected; BackgroundColor1 = UnSelected; BackgroundColorX = UnSelected;
                     break;
             }
-            //Send message to ShowMatchesViewModel holding data
-            Messenger.Publish(new OutcomeSelectedMessage(this, outcomeType));
-
-
         }
 
         private void SetAllBtnsToUnSelected()

@@ -16,7 +16,6 @@ namespace WeeBet.Core.Services.General
 
         public VendorValue CalculateCombination(Dictionary<Match, string> matchOutcomes)
         {
-            IEnumerable<string> outcomes = matchOutcomes.Values;
             IEnumerable<Vendor> vendors = GetVendorsFromMatches(matchOutcomes.Keys);
 
             VendorValue highest = new VendorValue();

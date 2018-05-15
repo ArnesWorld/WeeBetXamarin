@@ -73,8 +73,7 @@ namespace WeeBet.Android.Views
                 {
                     IOddsItemViewModel ow = (IOddsItemViewModel)item;
                     ow.IsButtonsVisible = true;             
-                }
-                      
+                }             
                 return base.GetBindableView(convertView, item, parent, base.ItemTemplateId);
             }
 
