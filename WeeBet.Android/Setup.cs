@@ -12,8 +12,11 @@ using Android.Widget;
 using MvvmCross;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Platform;
+using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
 using WeeBet.Core;
+using WeeBet.Core.Contracts.Repository;
+using WeeBet.Core.Repository;
 using WeeBet.Core.Services;
 
 namespace WeeBet.Android
@@ -26,6 +29,8 @@ namespace WeeBet.Android
 
         protected override IMvxApplication CreateApp()
         {
+            var dbConn = FileAccessHelper.GetLocalFilePath("WeeBetDb");
+            Mvx.RegisterSingleton<IFavouriteCompetitionsRepository>(new FavouriteCompetitionsRepository(dbConn));
             return new App();
         }
 

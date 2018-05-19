@@ -14,17 +14,17 @@ namespace WeeBet.Core
         {
             base.Initialize();
 
-            CreatableTypes()
-                .EndingWith("Repository")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
+            //CreatableTypes()
+            //    .EndingWith("Repository")
+            //    .AsInterfaces()
+            //    .RegisterAsLazySingleton();
 
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart(new AppStart());
+            //RegisterAppStart(new AppStart());
         }
     }
 }

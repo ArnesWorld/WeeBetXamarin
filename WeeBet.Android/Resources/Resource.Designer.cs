@@ -142,26 +142,26 @@ namespace WeeBet.Android
 			// aapt resource value: 0x7f050001
 			public const int MvxBindingTagUnique = 2131034113;
 			
-			// aapt resource value: 0x7f050008
-			public const int Odds1 = 2131034120;
-			
-			// aapt resource value: 0x7f05000a
-			public const int Odds2 = 2131034122;
-			
-			// aapt resource value: 0x7f050009
-			public const int OddsX = 2131034121;
-			
-			// aapt resource value: 0x7f050007
-			public const int Vendor = 2131034119;
-			
 			// aapt resource value: 0x7f05000b
-			public const int btnOdds1 = 2131034123;
+			public const int Odds1 = 2131034123;
 			
 			// aapt resource value: 0x7f05000d
-			public const int btnOdds2 = 2131034125;
+			public const int Odds2 = 2131034125;
 			
 			// aapt resource value: 0x7f05000c
-			public const int btnOddsX = 2131034124;
+			public const int OddsX = 2131034124;
+			
+			// aapt resource value: 0x7f05000a
+			public const int Vendor = 2131034122;
+			
+			// aapt resource value: 0x7f050007
+			public const int btnOdds1 = 2131034119;
+			
+			// aapt resource value: 0x7f050009
+			public const int btnOdds2 = 2131034121;
+			
+			// aapt resource value: 0x7f050008
+			public const int btnOddsX = 2131034120;
 			
 			// aapt resource value: 0x7f05000f
 			public const int button1 = 2131034127;
@@ -234,19 +234,13 @@ namespace WeeBet.Android
 			public const int item_odds = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int item_odds_footer = 2130903044;
+			public const int main_view = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int item_odds_header = 2130903045;
+			public const int ShowCompetitionsView = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int main_view = 2130903046;
-			
-			// aapt resource value: 0x7f030007
-			public const int ShowCompetitionsView = 2130903047;
-			
-			// aapt resource value: 0x7f030008
-			public const int ShowMatchesView = 2130903048;
+			public const int ShowMatchesView = 2130903046;
 			
 			static Layout()
 			{

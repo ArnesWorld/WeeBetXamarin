@@ -132,6 +132,7 @@
     <Compile Include="Bootstrap\SqlitePluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="FileAccessHelper.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
@@ -154,9 +155,6 @@
     <AndroidResource Include="Resources\layout\item_match_test.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\item_odds.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\main_view.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -166,10 +164,7 @@
     <AndroidResource Include="Resources\layout\item_competitions.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\item_odds_header.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\item_odds_footer.axml">
+    <AndroidResource Include="Resources\layout\item_odds.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

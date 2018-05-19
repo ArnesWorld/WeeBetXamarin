@@ -7,7 +7,7 @@ namespace WeeBet.Core.Contracts.Repository
 {
     public interface IFavouriteCompetitionsRepository
     {
-        void AddMatchToFavourites(Competition competition);
+        void AddCompetitonToFavourites(Competition competition);
 
         List<Competition> GetAllFavouriteCompetitionsBySportId(int sportId);
 

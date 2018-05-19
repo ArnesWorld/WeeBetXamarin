@@ -11,21 +11,17 @@ using WeeBet.Core.Models;
 
 namespace WeeBet.Core.Repository
 {
-    public class FavouriteCompetitionRepository : IFavouriteCompetitionsRepository
+    public class FavouriteCompetitionsRepository : IFavouriteCompetitionsRepository
     {
         private readonly SQLiteConnection _connection;
 
-        //public FavouriteCompetitionRepository()
-        //{
-
-        //}
-        public FavouriteCompetitionRepository(IMvxSqliteConnectionFactory sqliteConnectionFactory)
+        public FavouriteCompetitionsRepository(string dbPath)
         {
-            _connection = sqliteConnectionFactory.GetConnection("WeeBetDb");
+            _connection = new SQLiteConnection(dbPath);
             _connection.CreateTable<Competition>();
 
         }
-        public void AddMatchToFavourites(Competition competition)
+        public void AddCompetitonToFavourites(Competition competition)
         {
             _connection.Insert(competition);
             

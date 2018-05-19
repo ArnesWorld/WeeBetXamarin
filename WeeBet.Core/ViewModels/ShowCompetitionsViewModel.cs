@@ -8,6 +8,7 @@ using MvvmCross.Platform;
 using WeeBet.Core.Contracts.Repository;
 using WeeBet.Core.Contracts.Services;
 using WeeBet.Core.Models;
+using WeeBet.Core.Repository;
 
 namespace WeeBet.Core.ViewModels
 {
@@ -82,22 +83,22 @@ namespace WeeBet.Core.ViewModels
             }
             else
             {
-                _favouriteCompetitionsRepository.AddMatchToFavourites(selectedCompetition);
+                _favouriteCompetitionsRepository.AddCompetitonToFavourites(selectedCompetition);
             }
             LoadFavouriteCompetitons(_sportId);
         }
 
-       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
+       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService)
         {
             _competitionDataService = competitionsDataService;
-            _favouriteCompetitionsRepository = favouriteCompetitionsRepository;
+            _favouriteCompetitionsRepository = Mvx.Resolve<IFavouriteCompetitionsRepository>();
         }
 
         public void Init(int sportId, string sportName)
         {
              SportName = sportName;
             _sportId = sportId;
-            _favouriteCompetitionsRepository.Nuke();
+           // _favouriteCompetitionsRepository.Nuke();
             Competitions = new MvxObservableCollection<Competition>(_competitionDataService.GetCompetitionsBySportId(sportId));
             LoadFavouriteCompetitons(_sportId);
             RedirectToMatchesCommand = new MvxCommand<Competition>(OnCompetitionSelected);

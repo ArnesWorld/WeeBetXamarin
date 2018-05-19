@@ -47,7 +47,7 @@ namespace WeeBet.Android.Views
             var set = this.CreateBindingSet<ShowMatchesView, ShowMatchesViewModel>();
             set.Bind(exList).To(vm => vm.Matches).For(el => el.ItemsSource);
             set.Apply();
-            exList.ItemTemplateId = Resource.Layout.item_odds_header;
+            exList.ItemTemplateId = Resource.Layout.item_odds;
         }
 
         public class MyExpandableListAdapter : MvxExpandableListAdapter

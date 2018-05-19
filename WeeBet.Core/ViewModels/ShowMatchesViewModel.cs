@@ -106,21 +106,21 @@ namespace WeeBet.Core.ViewModels
             CompName = compName;
             Matches = new MvxObservableCollection<MatchHeader>();
 
-            GetMatchesFromDataServiceAsync(compId);
-            //matchList = _matchDataService.GetMatchesByCompetitionId(compId);
-            //foreach (var m in matchList)
-            //{
-            //    MatchHeader currMatchHeader = new MatchHeader(m);
-            //    foreach (Odds o in m.Odds)
-            //    {              
-            //        OddsItemViewModel ow = new OddsItemViewModel(o, Messenger);
-               
-            //        currMatchHeader.Add(ow);                
-            //    }
-            //    Matches.Add(currMatchHeader);
-   
-            //}
-        
+            //GetMatchesFromDataServiceAsync(compId);
+            matchList = _matchDataService.GetMatchesByCompetitionId(compId);
+            foreach (var m in matchList)
+            {
+                MatchHeader currMatchHeader = new MatchHeader(m);
+                foreach (Odds o in m.Odds)
+                {
+                    OddsItemViewModel ow = new OddsItemViewModel(o, Messenger);
+
+                    currMatchHeader.Add(ow);
+                }
+                Matches.Add(currMatchHeader);
+
+            }
+
         }
 
 
