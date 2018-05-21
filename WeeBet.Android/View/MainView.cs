@@ -14,7 +14,7 @@ using WeeBet.Core.ViewModels;
 
 namespace WeeBet.Android.View
 {
-    [Activity(Label = "WeeBet", MainLauncher = true)]
+     [Activity]
     public class MainView : MvxActivity<MainViewModel>
     {
         protected override void OnViewModelSet()

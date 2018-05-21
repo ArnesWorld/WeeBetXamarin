@@ -114,6 +114,9 @@ namespace WeeBet.Android
 			// aapt resource value: 0x7f020007
 			public const int tennis = 2130837511;
 			
+			// aapt resource value: 0x7f020008
+			public const int weebet_logo = 2130837512;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -245,6 +248,9 @@ namespace WeeBet.Android
 			// aapt resource value: 0x7f030006
 			public const int ShowMatchesView = 2130903046;
 			
+			// aapt resource value: 0x7f030007
+			public const int splash_screen = 2130903047;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -282,6 +288,9 @@ namespace WeeBet.Android
 		
 		public partial class Style
 		{
+			
+			// aapt resource value: 0x7f060001
+			public const int Splash = 2131099649;
 			
 			// aapt resource value: 0x7f060000
 			public const int SportButton = 2131099648;

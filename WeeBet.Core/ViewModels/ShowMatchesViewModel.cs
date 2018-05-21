@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Plugins.Messenger;
+using MvvmCross.Plugins.WebBrowser;
 using WeeBet.Core.Contracts.Services;
 using WeeBet.Core.Messages;
 using WeeBet.Core.Models;
@@ -18,6 +19,11 @@ namespace WeeBet.Core.ViewModels
     {
         private readonly IMatchDataService _matchDataService;
         private readonly ICombinationCalculatorService _comboCalcService;
+        private readonly IMvxWebBrowserTask _webBrowser;
+        private readonly IConnectivityService _connectivityService;
+        private readonly IDialogService _dialogService;
+
+        public IMvxCommand DirectToWebPageCommand { get; set; }
 
         private List<Match> matchList;
         private Dictionary<Match, string> matchOutcomes;
@@ -62,13 +68,39 @@ namespace WeeBet.Core.ViewModels
 
   
 
-        public ShowMatchesViewModel(IMatchDataService matchDataService,  IMvxMessenger messenger)
+        public ShowMatchesViewModel(IMatchDataService matchDataService,  
+            IMvxMessenger messenger, IMvxWebBrowserTask webBrowser, IConnectivityService connectivityService,
+            IDialogService dialogService)
         {
+            _connectivityService = connectivityService;
+            _dialogService = dialogService;
+            _webBrowser = webBrowser;
             _comboCalcService = new CombinationCalculator();
             matchOutcomes = new Dictionary<Match, string>();
             _matchDataService = matchDataService;
             _token = messenger.Subscribe<OutcomeSelectedMessage>(UpdateVendorValue);
             Messenger = messenger;
+
+            DirectToWebPageCommand = new MvxCommand(() => {
+                if (_connectivityService.CheckOnline())
+                {
+                    try
+                    {
+                        _webBrowser.ShowWebPage(VendorValue.Vendor.Url);
+                    }
+                    catch (Exception)
+                    {
+
+                        _dialogService.ShowAlert("Ups, something went wrong when trying to redirct", "Couldn't redirct", "OK");
+                    }
+                  
+                }
+                else
+                {
+                    _dialogService.ShowAlert("Please connect to internet and try again", "Couldn't redirct. No Internet Connection", "OK");
+                }
+               
+            });
         }
 
         private void UpdateVendorValue(OutcomeSelectedMessage message)

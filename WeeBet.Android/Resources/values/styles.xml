@@ -2,6 +2,8 @@
 
 
     <resources>
+      
+      
       <style name="SportButton">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_width">wrap_content</item>
@@ -12,6 +14,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ff29549f</item>
         <item name="android:background">@null</item>
+      </style>
+
+      <style name="Splash">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/weebet_logo</item>
       </style>
 
     </resources>

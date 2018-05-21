@@ -24,7 +24,7 @@ namespace WeeBet.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            //RegisterAppStart(new AppStart());
+            RegisterAppStart(new AppStart());
         }
     }
 }

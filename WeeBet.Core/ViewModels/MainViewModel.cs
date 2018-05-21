@@ -13,13 +13,25 @@ namespace WeeBet.Core.ViewModels
     {
         public IMvxCommand ShowMatchesCommand { get; set; }
         public IMvxCommand<int> ShowCompetitionsCommand { get; set; }
-    
-        public MainViewModel()
+
+        protected readonly IConnectivityService _connectivityService;
+        protected readonly IDialogService _dialogService;
+
+        public MainViewModel(IConnectivityService connectivityService, IDialogService dialogService)
         {
+            _connectivityService = connectivityService;
+            _dialogService = dialogService;
             ShowCompetitionsCommand = new MvxCommand<int>((id) =>
             {
-                string sName = GetSportNameById(id);
-                ShowViewModel<ShowCompetitionsViewModel>(new { sportId = id, sportName =sName });
+                if (_connectivityService.CheckOnline())
+                {
+                    string sName = GetSportNameById(id);
+                    ShowViewModel<ShowCompetitionsViewModel>(new { sportId = id, sportName = sName });
+                }
+                else
+                {
+                    _dialogService.ShowAlert("Please connect to internet and try again","No Internet Connection", "OK");
+                }
             });
 
             ShowMatchesCommand = new MvxCommand(() => {
