@@ -27,12 +27,14 @@ namespace WeeBet.Core.Services.DataServices
             //Get JSON from url
             WebClient client = new WebClient();
             string page = client.DownloadString(MatchesURL + id);
-            JArray matches = JArray.Parse(page);
-            foreach (var m in matches)
-            {
-                Match match = JsonConvert.DeserializeObject<Match>(m.ToString());
-                res.Add(match);
-            }
+        //    JArray matches = JArray.Parse(page);
+            
+            res = JsonConvert.DeserializeObject<List<Match>>(page);
+            //foreach (var m in matches)
+            //{
+            //    Match match = JsonConvert.DeserializeObject<Match>(m.ToString());
+            //    res.Add(match);
+            //}
 
             return res;
         }

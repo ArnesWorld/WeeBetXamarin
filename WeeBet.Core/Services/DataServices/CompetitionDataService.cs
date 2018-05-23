@@ -17,14 +17,8 @@ namespace WeeBet.Core.Services.DataServices
         {
             List<Competition> res = new List<Competition>();
             WebClient client = new WebClient();
-            String page = client.DownloadString(CompetitionsURL + id);
-            JArray competitions = JArray.Parse(page);
-            foreach(var c in competitions)
-            {
-                Competition competition = JsonConvert.DeserializeObject<Competition>(c.ToString());
-                res.Add(competition);
-            }
-
+            String page = client.DownloadString(CompetitionsURL + id);     
+            res = JsonConvert.DeserializeObject<List<Competition>>(page);
             return res;
         }
     }
