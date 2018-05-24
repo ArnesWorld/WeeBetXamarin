@@ -88,10 +88,11 @@ namespace WeeBet.Core.ViewModels
             LoadFavouriteCompetitons(_sportId);
         }
 
-       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService)
+       public ShowCompetitionsViewModel(ICompetitionsDataService competitionsDataService, 
+           IFavouriteCompetitionsRepository favouriteCompetitionsRepository)
         {
+            _favouriteCompetitionsRepository = favouriteCompetitionsRepository;
             _competitionDataService = competitionsDataService;
-            _favouriteCompetitionsRepository = Mvx.Resolve<IFavouriteCompetitionsRepository>();
         }
 
         public void Init(int sportId, string sportName)

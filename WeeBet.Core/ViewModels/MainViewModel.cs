@@ -23,6 +23,7 @@ namespace WeeBet.Core.ViewModels
             _dialogService = dialogService;
             ShowCompetitionsCommand = new MvxCommand<int>((id) =>
             {
+                bool online = _connectivityService.CheckOnline();
                 if (_connectivityService.CheckOnline())
                 {
                     string sName = GetSportNameById(id);
